@@ -1,15 +1,15 @@
-import { StyleSheet, TextInput, View, Image } from "react-native";
+import { StyleSheet, TextInput, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { icons } from "@/constants/icons";
 
-interface Props{
-    placeholder:string;
-    onPress?:()=>void;
-    value:string;
-    onChangeText:(text:string)=>void;
-  }
+interface Props {
+  placeholder: string;
+  onPress?: () => void;
+  value: string;
+  onChangeText: (text: string) => void;
+}
 
-const SearchBar = ({placeholder,onPress,value,onChangeText}):Props => {
+const SearchBar: React.FC<Props> = ({ placeholder, onPress, value, onChangeText }) => {
   return (
     <View className="flex-row items-center bg-dark-200 rounded-full px-5 py-5">
       <Image
@@ -18,14 +18,15 @@ const SearchBar = ({placeholder,onPress,value,onChangeText}):Props => {
         resizeMode="contain"
         tintColor="#ab8bff"
       />
-      <TextInput
-        onPress={onPress}
-        placeholder={placeholder}
-        value={value}
-        onChangeText={onChangeText}
-        placeholderTextColor="#a8b5db"
-        className="flex-1 ml-2 text-white"
-      />
+      <TouchableOpacity onPress={onPress} className="flex-1">
+        <TextInput
+          placeholder={placeholder}
+          value={value}
+          onChangeText={onChangeText}
+          placeholderTextColor="#a8b5db"
+          className="text-white"
+        />
+      </TouchableOpacity>
     </View>
   );
 };
